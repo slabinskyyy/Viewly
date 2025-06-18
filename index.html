@@ -2,91 +2,88 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kocham Cię Sandruś</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Załóż konto</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(#ffdee9, #ffc0cb);
-      height: 100vh;
-      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
       display: flex;
-      justify-content: center;
       align-items: center;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
 
-    h1 {
-      color: #e60073;
-      font-size: 3em;
-      z-index: 2;
-      text-shadow: 2px 2px 5px white;
-      position: absolute;
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
       text-align: center;
+      color: #333;
+      margin-bottom: 20px;
     }
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: fall 6s linear infinite;
-      opacity: 0.8;
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
-    .heart::before {
-      top: -10px;
-      left: 0;
+    button:hover {
+      background-color: #0056b3;
     }
 
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-
-    @keyframes fall {
-      0% {
-        top: -10%;
-        transform: rotate(45deg) translateX(0);
-        opacity: 1;
-      }
-      100% {
-        top: 110%;
-        transform: rotate(45deg) translateX(100px);
-        opacity: 0;
-      }
+    .success {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+      color: green;
     }
   </style>
 </head>
 <body>
-  <h1>KOCHAM CIĘ SANDRUŚ ❤️</h1>
+  <div class="container">
+    <h2>Załóż konto</h2>
+    <form id="registerForm">
+      <input type="text" placeholder="Imię" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Hasło" required />
+      <button type="submit">Zarejestruj się</button>
+    </form>
+    <div class="success" id="successMessage">Konto zostało utworzone! 🎉</div>
+  </div>
 
   <script>
-    // Tworzenie spadających serc
-    const createHeart = () => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-      document.body.appendChild(heart);
-      setTimeout(() => {
-        heart.remove();
-      }, 6000);
-    };
+    // Obsługa formularza (tymczasowo tylko frontend)
+    const form = document.getElementById('registerForm');
+    const successMessage = document.getElementById('successMessage');
 
-    setInterval(createHeart, 300);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Zapobiega przeładowaniu strony
+      successMessage.style.display = 'block';
+      form.reset();
+    });
   </script>
 </body>
 </html>
